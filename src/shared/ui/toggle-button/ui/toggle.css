@@ -1,0 +1,41 @@
+.toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	gap: 8px;
+}
+
+.toggle-button {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	width: 36px;
+	height: 20px;
+	padding: 2px;
+	background-color: #b1b1b1;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: 0.25s ease-in-out;
+}
+
+.toggle-active-true {
+	background-color: var(--color-black-100);
+}
+
+.toggle-button-marker {
+	width: 16px;
+	height: 16px;
+	background-color: #fcfcfc;
+	border-radius: 100px;
+	transition: transform 0.25s ease-in-out;
+}
+
+.toggle-active-false .toggle-button-marker {
+	transform: translateX(0);
+}
+
+.toggle-active-true .toggle-button-marker {
+	transform: translateX(16px);
+}

@@ -1,0 +1,15 @@
+.arrow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrow-btn img {
+    height: 27px;
+    width: 22px;
+}
+
+.arrow-btn-toNext {
+    transform: scaleX(-1);
+}

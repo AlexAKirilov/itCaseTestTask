@@ -1,0 +1,16 @@
+.cart__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.cart__list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart__list-total {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-grey-light);
+}
