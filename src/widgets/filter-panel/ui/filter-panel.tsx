@@ -7,49 +7,49 @@ import {InputField} from "@/shared/ui/input-field";
 import {Text} from "@/shared/ui/text";
 
 export interface FilterPanelProps {
-    onlyInStock: boolean;
-    onToggleInStock: () => void;
-    sortBy: 'asc' | 'desc' | null;
-    onSortBy: (sort: 'asc' | 'desc' | null) => void;
-    searchQuery: string;
-    onSearchQueryChange: (query: string) => void;
+    only_in_stock: boolean;
+    on_toggle_in_stock: () => void;
+    sort_by: 'asc' | 'desc' | null;
+    on_sort_by: (sort: 'asc' | 'desc' | null) => void;
+    search_query: string;
+    on_search_query_change: (query: string) => void;
 }
 
 export const FilterPanel: FC<FilterPanelProps> = ({ 
-    onlyInStock, 
-    onToggleInStock, 
-    sortBy, 
-    onSortBy,
-    searchQuery,
-    onSearchQueryChange
+    only_in_stock, 
+    on_toggle_in_stock, 
+    sort_by, 
+    on_sort_by,
+    search_query,
+    on_search_query_change
 }) => {
     return (
         <div className={cn('filter__panel')}>
             <div className={cn('filter__left')}>
                 <div className={cn('filter__sort')}>
                     <Button
-                        onClickAction={() => onSortBy(sortBy === 'asc' ? null : 'asc')}
-                        customClassnames={cn('filter__sort-btn', sortBy === 'asc' && 'active')}
+                        on_click_action={() => on_sort_by(sort_by === 'asc' ? null : 'asc')}
+                        custom_classnames={cn('filter__sort-btn', sort_by === 'asc' && 'active')}
                     >
                         <Text typo={"secondary_sbold"}>
                             {'сначала дешевле'}
                         </Text>
                     </Button>
                     <Button
-                        onClickAction={() => onSortBy(sortBy === 'desc' ? null : 'desc')}
-                        customClassnames={cn('filter__sort-btn', sortBy === 'desc' && 'active')}
+                        on_click_action={() => on_sort_by(sort_by === 'desc' ? null : 'desc')}
+                        custom_classnames={cn('filter__sort-btn', sort_by === 'desc' && 'active')}
                     >
                         <Text typo={"secondary_sbold"}>
                             {'сначала дороже'}
                         </Text>
                     </Button>
                 </div>
-                <Toggle text={'в наличии'} defaultState={onlyInStock} onClick={onToggleInStock} />
+                <Toggle text={'в наличии'} default_state={only_in_stock} on_click={on_toggle_in_stock} />
             </div>
             <InputField
                 placeholder={'поиск'}
-                value={searchQuery}
-                onChange={onSearchQueryChange}
+                value={search_query}
+                on_change={on_search_query_change}
             />
         </div>
     )

@@ -2,9 +2,9 @@ import {ProductDTO} from "@/entities/product/model/types";
 
 export interface FilterProductsParams {
     products: ProductDTO[]
-    onlyInStock?: boolean
-    sortBy?: 'asc' | 'desc' | null
-    searchQuery?: string
+    only_in_stock?: boolean
+    sort_by?: 'asc' | 'desc' | null
+    search_query?: string
 }
 
 const getMinPrice = (product: ProductDTO): number => {
@@ -15,28 +15,28 @@ const getMinPrice = (product: ProductDTO): number => {
 
 export const filterProducts = ({
     products,
-    onlyInStock = false,
-    sortBy = null,
-    searchQuery = '',
+    only_in_stock = false,
+    sort_by = null,
+    search_query = '',
 }: FilterProductsParams): ProductDTO[] => {
     let result = products.filter(product => {
-        if (onlyInStock && !product.colors.some(color => color.sizes && color.sizes.length > 0)) {
+        if (only_in_stock && !product.colors.some(color => color.sizes && color.sizes.length > 0)) {
             return false;
         }
 
-        if (searchQuery.trim()) {
-            const query = searchQuery.toLowerCase().trim();
+        if (search_query.trim()) {
+            const query = search_query.toLowerCase().trim();
             return product.name.toLowerCase().includes(query);
         }
 
         return true;
     });
 
-    if (sortBy) {
+    if (sort_by) {
         result = [...result].sort((a, b) => {
             const priceA = getMinPrice(a);
             const priceB = getMinPrice(b);
-            return sortBy === 'asc' ? priceA - priceB : priceB - priceA;
+            return sort_by === 'asc' ? priceA - priceB : priceB - priceA;
         });
     }
 

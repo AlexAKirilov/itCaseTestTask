@@ -24,12 +24,12 @@ export const Каталог: Story = {
 
 export const Только_в_наличии: Story = {
     args: {
-        onlyInStock: true,
+        only_in_stock: true,
     },
 }
 
 export const Сортировка_по_цене: Story = {
     args: {
-        sortBy: 'asc',
+        sort_by: 'asc',
     },
 }

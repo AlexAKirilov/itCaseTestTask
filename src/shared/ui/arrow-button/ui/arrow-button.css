@@ -1,15 +1,15 @@
 .arrow-btn {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
 .arrow-btn img {
-    height: 27px;
     width: 22px;
+    height: 27px;
 }
 
-.arrow-btn-toNext {
+.arrow-btn-to_next {
     transform: scaleX(-1);
 }

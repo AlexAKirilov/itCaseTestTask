@@ -19,12 +19,12 @@ type Story = StoryObj<typeof meta>
 
 export const Следующее_изображение: Story = {
 	args: {
-		buttonDirection: 'toNext',
+		button_direction: 'to_next',
 	},
 }
 
 export const Предыдущее_изображение: Story = {
 	args: {
-		buttonDirection: 'toPrevious',
+		button_direction: 'to_previous',
 	},
 }

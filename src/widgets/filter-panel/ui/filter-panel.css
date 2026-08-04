@@ -1,9 +1,9 @@
 .filter__panel {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 32px 64px;
     background-color: var(--color-grey-light-30);
-    justify-content: space-between;
 }
 
 .filter__left {

@@ -8,12 +8,12 @@ import {cartService} from "@/entities/cart/lib/cart-service";
 
 export interface CartItemProps {
     item: CartItemDTO
-    onUpdateQuantity: (key: CartItemKey, quantity: number) => void
-    onRemove: (key: CartItemKey) => void
+    on_update_quantity: (key: CartItemKey, quantity: number) => void
+    on_remove: (key: CartItemKey) => void
 }
 
 export const CartItem: FC<CartItemProps> = props => {
-    const { item, onUpdateQuantity, onRemove } = props
+    const { item, on_update_quantity, on_remove } = props
     const itemKey: CartItemKey = {
         product_id: item.product_id,
         color_id: item.color_id,
@@ -46,8 +46,8 @@ export const CartItem: FC<CartItemProps> = props => {
             <div className={'cart__item-actions'}>
                 <div className={'cart__item-quantity'}>
                     <Button
-                        customClassnames={'cart__item-quantity-btn'}
-                        onClickAction={() => onUpdateQuantity(itemKey, item.quantity - 1)}
+                        custom_classnames={'cart__item-quantity-btn'}
+                        on_click_action={() => on_update_quantity(itemKey, item.quantity - 1)}
                     >
                         −
                     </Button>
@@ -55,15 +55,15 @@ export const CartItem: FC<CartItemProps> = props => {
                         {item.quantity}
                     </Text>
                     <Button
-                        customClassnames={'cart__item-quantity-btn'}
-                        onClickAction={() => onUpdateQuantity(itemKey, item.quantity + 1)}
+                        custom_classnames={'cart__item-quantity-btn'}
+                        on_click_action={() => on_update_quantity(itemKey, item.quantity + 1)}
                     >
                         +
                     </Button>
                 </div>
                 <Button
-                    customClassnames={'cart__item-remove-btn'}
-                    onClickAction={() => onRemove(itemKey)}
+                    custom_classnames={'cart__item-remove-btn'}
+                    on_click_action={() => on_remove(itemKey)}
                 >
                     удалить
                 </Button>

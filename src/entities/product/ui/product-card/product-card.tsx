@@ -49,8 +49,8 @@ export const ProductCard: FC<ProductCardProps> = props => {
         <div className={cn('product__card', custom_classnames)}>
             <div className={'product__image-container'}>
                 <img className={'product__image'} src={require(`@/shared/assets${selectedColor.images[currentImageIndex]}`)} alt={`Изображение продукта: ${product_data.name}`}/>
-                <ArrowButton buttonDirection={"toNext"} onClickAction={handleNextImageClick} customClassname={cn('image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-next')}/>
-                <ArrowButton buttonDirection={"toPrevious"} onClickAction={handlePreviousImageClick} customClassname={cn('image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-previous')}/>
+                <ArrowButton button_direction={"to_next"} on_click_action={handleNextImageClick} custom_classnames={cn('image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-next')}/>
+                <ArrowButton button_direction={"to_previous"} on_click_action={handlePreviousImageClick} custom_classnames={cn('image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-previous')}/>
             </div>
             <div className={'product__info'}>
                 <div className={'product__colors'}>
@@ -71,7 +71,7 @@ export const ProductCard: FC<ProductCardProps> = props => {
                     {product_data.name}
                 </Text>
             </div>
-            <Button customClassnames={cn('product__btn')} onClickAction={handleDetailsClick} disabled={selectedColor.sizes.length < 1}>
+            <Button custom_classnames={cn('product__btn')} on_click_action={handleDetailsClick} disabled={selectedColor.sizes.length < 1}>
                 <Text typo={"secondary_sbold"} align={"center"}>
                     {selectedColor.sizes.length < 1 ? "нет в наличии" : "подробнее"}
                 </Text>

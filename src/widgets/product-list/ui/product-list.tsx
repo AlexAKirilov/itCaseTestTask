@@ -9,15 +9,15 @@ import {Text} from "@/shared/ui/text";
 import {Loader} from "@/shared/ui/loader/ui/loader";
 
 export interface ProductListProps {
-    onlyInStock?: boolean;
-    sortBy?: 'asc' | 'desc' | null;
-    searchQuery?: string;
+    only_in_stock?: boolean;
+    sort_by?: 'asc' | 'desc' | null;
+    search_query?: string;
 }
 
 export const ProductList: FC<ProductListProps> = ({ 
-    onlyInStock = false, 
-    sortBy = null,
-    searchQuery = ''
+    only_in_stock = false, 
+    sort_by = null,
+    search_query = ''
 }) => {
     const navigate = useNavigate()
     const {data, isLoading, error} = useProducts()
@@ -27,7 +27,7 @@ export const ProductList: FC<ProductListProps> = ({
     if (error) return <Text typo={"primary_lg"}>{`Произошла ошибка: ${error}`}</Text>;
 
     const filteredData = data
-        ? filterProducts({ products: data, onlyInStock, sortBy, searchQuery })
+        ? filterProducts({ products: data, only_in_stock, sort_by, search_query })
         : null;
 
     const handleDetailsClick = (product_id: number) => {

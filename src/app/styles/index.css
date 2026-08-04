@@ -1,6 +1,9 @@
 /* Удобнее работать, когда базовые стили html тегов убраны, так что добавил нормалайз */
+
 @import url('../../../node_modules/normalize.css');
+
 /* Подключил шрифты */
+
 @import url('../../shared/assets/fonts/font.css');
 
 /* Сделал для чистоты стилей дальше */
@@ -41,7 +44,6 @@ a {
 
 :root {
   --section-padding-rl: 80px;
-
   --color-black-100: #1d1d1d;
   --color-black-70: #1d1d1db3;
   --color-black-30: #1d1d1d4d;

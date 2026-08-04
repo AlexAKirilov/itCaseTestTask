@@ -21,6 +21,6 @@ type Story = StoryObj<typeof meta>
 export const Фильтр_наличия: Story = {
 	args: {
 		text: 'В наличии',
-		classname: ['toggle', 'toggle-btn'],
+		custom_classnames: ['toggle', 'toggle-btn'],
 	},
 }

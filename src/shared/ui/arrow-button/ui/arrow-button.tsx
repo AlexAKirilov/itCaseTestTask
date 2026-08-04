@@ -4,23 +4,23 @@ import './arrow-button.css'
 import arrow_btn from '@/shared/assets/images/arrow_btn-next.svg'
 
 export interface ArrowButtonProps {
-	onClickAction?: () => void
-	buttonDirection: 'toNext' | 'toPrevious'
-	customClassname?: string
+	on_click_action?: () => void
+	button_direction: 'to_next' | 'to_previous'
+	custom_classnames?: string[] | string
 }
 
 export const ArrowButton: FC<ArrowButtonProps> = (props) => {
-	const { onClickAction, buttonDirection, customClassname } = props
+	const { on_click_action, button_direction, custom_classnames } = props
 
 	return (
 		<button
 			className={cn(
 				'btn-reset',
 				'arrow-btn',
-				`arrow-btn-${buttonDirection}`,
-				customClassname
+				`arrow-btn-${button_direction}`,
+				custom_classnames
 			)}
-			onClick={onClickAction}
+			onClick={on_click_action}
 		>
 			<img src={arrow_btn} alt={'Иконка стрелочной кнопки'} />
 		</button>
