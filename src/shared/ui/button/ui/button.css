@@ -1,0 +1,15 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--color-black-100);
+    border-radius: 59px;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    background-color: var(--color-grey-medium);
+    box-shadow: none;
+    cursor: not-allowed;
+}

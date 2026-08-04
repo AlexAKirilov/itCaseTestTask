@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input {
+    padding: 17px 24px;
+    color: var(--color-black-100);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--secondary-sbold);
+    font-family: 'Involve', sans-serif;
+    line-height: 1;
+    background-color: var(--color-grey-light);
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+.input:focus {
+    background-color: var(--color-white-100);
+}
+
+.input::placeholder {
+    color: var(--color-black-100);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--secondary-sbold);
+    font-family: 'Involve', sans-serif;
+    line-height: 1;
+}

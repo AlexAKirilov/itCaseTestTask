@@ -1,0 +1,354 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Catalog API",
+    "version": "1.0.0",
+    "description": "API для получения информации о товарах, категориях и размерах."
+  },
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "Sizes"
+    },
+    {
+      "name": "Categories"
+    },
+    {
+      "name": "Products"
+    }
+  ],
+  "paths": {
+    "/sizes": {
+      "get": {
+        "tags": [
+          "Sizes"
+        ],
+        "summary": "Получить список размеров",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Size"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sizes/{id}": {
+      "get": {
+        "tags": [
+          "Sizes"
+        ],
+        "summary": "Получить размер",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID размера"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Size"
+            }
+          },
+          "404": {
+            "description": "Размер не найден",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Получить список категорий",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Получить категорию",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID категории"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "404": {
+            "description": "Категория не найдена",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Получить список товаров",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Получить товар",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID товара"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "404": {
+            "description": "Товар не найден",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products/{productId}/colors/{colorId}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Получить вариант цвета товара",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID товара"
+          },
+          {
+            "name": "colorId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID цвета"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductColor"
+            }
+          },
+          "404": {
+            "description": "Товар или цвет не найден",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Size": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "number"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "XS"
+        },
+        "number": {
+          "type": "integer",
+          "example": 44
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Верхняя одежда"
+        }
+      }
+    },
+    "ProductColor": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "images",
+        "price",
+        "description",
+        "sizes"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "черный"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "/images/1/black_front.png",
+            "/images/1/black_back.png"
+          ]
+        },
+        "price": {
+          "type": "string",
+          "example": "123.00"
+        },
+        "description": {
+          "type": "string",
+          "example": "Описание для \"Футболка черный\""
+        },
+        "sizes": {
+          "type": "array",
+          "description": "Список ID доступных размеров",
+          "items": {
+            "type": "integer"
+          },
+          "example": [
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "categoryId",
+        "brand",
+        "colors"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Футболка"
+        },
+        "categoryId": {
+          "type": "integer",
+          "example": 1
+        },
+        "brand": {
+          "type": "string",
+          "example": "Basic Club"
+        },
+        "colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductColor"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Product not found"
+        }
+      }
+    }
+  }
+}

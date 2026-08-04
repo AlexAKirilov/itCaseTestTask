@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-grey-light);
+}
+
+.active {
+    border-bottom: 2px solid var(--color-black-100);
+}
