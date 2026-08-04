@@ -13,10 +13,12 @@ import {ProductNotFound} from "@/widgets/product-section/ui/product-not-found";
 export interface ProductProps {
     product_id: number
     default_color_id?: number
+    default_size_id?: number
+    on_selection_change?: (color_id: number | null, size_id: number | null) => void
 }
 
 export const Product: FC<ProductProps> = props => {
-    const { product_id, default_color_id } = props
+    const { product_id, default_color_id, default_size_id, on_selection_change } = props
 
     const {
         product_data,
@@ -29,11 +31,21 @@ export const Product: FC<ProductProps> = props => {
         selectedColor,
         currentImageIndex,
         isOnlyImage,
-        handleSetColor,
+        handleSetColor: handleSetColorFromHook,
         handleNextImageClick,
         handlePreviousImageClick,
         setSelectedSizeId,
-    } = useProduct(product_id, default_color_id)
+    } = useProduct(product_id, default_color_id, default_size_id)
+
+    const handleSetColor = (color_id: number) => {
+        handleSetColorFromHook(color_id)
+        on_selection_change?.(color_id, null)
+    }
+
+    const handleSetSize = (size_id: number) => {
+        setSelectedSizeId(size_id)
+        on_selection_change?.(selectedColorId, size_id)
+    }
 
     const handleAddToCart = () => {
         if (!product_data || !selectedColor || !selectedSizeId) return
@@ -53,8 +65,8 @@ export const Product: FC<ProductProps> = props => {
             <div className={'product__section-info'}>
                 <div className={'product__section-image__container'}>
                     <img className={'product__section-image'} src={require(`@/shared/assets${selectedColor.images[currentImageIndex]}`)} alt={`Изображение продукта: ${product_data.name}`}/>
-                    <ArrowButton buttonDirection={"toNext"} onClickAction={handleNextImageClick} customClassname={cn('product__section-image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-next')}/>
-                    <ArrowButton buttonDirection={"toPrevious"} onClickAction={handlePreviousImageClick} customClassname={cn('product__section-image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-previous')}/>
+                    <ArrowButton button_direction={"to_next"} on_click_action={handleNextImageClick} custom_classnames={cn('product__section-image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-next')}/>
+                    <ArrowButton button_direction={"to_previous"} on_click_action={handlePreviousImageClick} custom_classnames={cn('product__section-image__btn', {'image__btn-hidden': isOnlyImage}, 'image__btn-previous')}/>
                 </div>
                 <div className={'product__section-side__content'}>
                     <div className={'product__section-side__text'}>
@@ -91,8 +103,8 @@ export const Product: FC<ProductProps> = props => {
                                         return (
                                             <Button
                                                 key={size.id}
-                                                onClickAction={() => setSelectedSizeId(size.id)}
-                                                customClassnames={cn(
+                                                on_click_action={() => handleSetSize(size.id)}
+                                                custom_classnames={cn(
                                                     'product__section-size-btn',
                                                     selectedSizeId === size.id && 'active'
                                                 )}
@@ -114,8 +126,8 @@ export const Product: FC<ProductProps> = props => {
 
                     <div className={'product__section-side__actions'}>
                         <Button 
-                            customClassnames={cn('product__section-cart__btn')} 
-                            onClickAction={handleAddToCart}
+                            custom_classnames={cn('product__section-cart__btn')} 
+                            on_click_action={handleAddToCart}
                             disabled={selectedColor.sizes.length < 1 || !selectedSizeId}
                         >
                             <Text typo={"secondary_sbold"} align={"center"}>

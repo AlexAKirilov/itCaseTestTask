@@ -1,14 +1,14 @@
 .product__card {
     display: flex;
-    flex-direction: column;
     flex-shrink: 1;
+    flex-direction: column;
+    gap: 16px;
     width: 275px;
     height: fit-content;
-    gap: 16px;
-    background-color: var(--color-grey-light);
-    border-radius: 30px;
     padding: 4px;
     overflow: hidden;
+    background-color: var(--color-grey-light);
+    border-radius: 30px;
 }
 
 .product__image-container {
@@ -25,22 +25,22 @@
 
 .product__info {
     display: flex;
-    padding-left: 16px;
-    padding-right: 16px;
     flex-direction: column;
     gap: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .product__colors {
     display: flex;
-    height: 20px;
     align-items: center;
     gap: 4px;
+    height: 20px;
 }
 
 .image__btn {
-    top: 50%;
     position: absolute;
+    top: 50%;
     padding: 8px;
     background-color: var(--color-grey-light);
 }

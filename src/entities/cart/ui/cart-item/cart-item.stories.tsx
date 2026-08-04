@@ -36,7 +36,7 @@ type Story = StoryObj<typeof meta>
 export const Позиция_в_корзине: Story = {
     args: {
         item: mockItem,
-        onUpdateQuantity: () => {},
-        onRemove: () => {},
+        on_update_quantity: () => {},
+        on_remove: () => {},
     },
 }

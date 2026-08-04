@@ -31,8 +31,8 @@ export const CartList: FC = () => {
                     <CartItem
                         key={`${item.product_id}-${item.color_id}-${item.size_id}`}
                         item={item}
-                        onUpdateQuantity={handleUpdateQuantity}
-                        onRemove={handleRemove}
+                        on_update_quantity={handleUpdateQuantity}
+                        on_remove={handleRemove}
                     />
                 ))}
             </div>

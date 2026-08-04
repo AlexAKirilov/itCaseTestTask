@@ -37,14 +37,14 @@ export const CatalogPage: FC = () => {
         <>
             <title>Тестовое задание | Каталог</title>
             <FilterPanel 
-                onlyInStock={onlyInStock} 
-                onToggleInStock={handleToggleInStock}
-                sortBy={sortBy}
-                onSortBy={handleSortBy}
-                searchQuery={searchQuery}
-                onSearchQueryChange={setSearchQuery}
+                only_in_stock={onlyInStock} 
+                on_toggle_in_stock={handleToggleInStock}
+                sort_by={sortBy}
+                on_sort_by={handleSortBy}
+                search_query={searchQuery}
+                on_search_query_change={setSearchQuery}
             />
-            <ProductList onlyInStock={onlyInStock} sortBy={sortBy} searchQuery={searchQuery} />
+            <ProductList only_in_stock={onlyInStock} sort_by={sortBy} search_query={searchQuery} />
         </>
     )
 }

@@ -4,16 +4,16 @@ import cn from 'classnames'
 import './loader.css'
 
 export interface LoaderProps {
-    customClassnames?: string[] | string
+    custom_classnames?: string[] | string
 }
 
 export const Loader:FC<LoaderProps> = props => {
-    const {customClassnames} = props
+    const {custom_classnames} = props
 
     return (
         <div className={cn('loader__wrapper')}>
             <svg
-                className={cn('loader', customClassnames)}
+                className={cn('loader', custom_classnames)}
                 viewBox="0 0 24 24"
             >
                 <circle className="spinner_nOfF" cx="4" cy="12" r="3" fill="currentColor"/>

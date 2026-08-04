@@ -5,7 +5,11 @@ import {ProductSizeDTO} from "@/entities/size/types";
 import {getProduct, getSizes} from "@/shared/api/api";
 
 
-export const useProduct = (product_id: number, default_color_id?: number) => {
+export const useProduct = (
+    product_id: number,
+    default_color_id?: number,
+    default_size_id?: number,
+) => {
     const [data, setData] = useState<ProductDTO | null>(null)
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -22,8 +26,6 @@ export const useProduct = (product_id: number, default_color_id?: number) => {
         getProduct(product_id)
             .then((product: ProductDTO) => {
                 setData(product)
-                const initialColorId = default_color_id ?? product.colors[0]?.id ?? null
-                setColorId(initialColorId)
             })
             .catch((error) => {
                 const message = error instanceof Error ? error.message : String(error)
@@ -35,7 +37,24 @@ export const useProduct = (product_id: number, default_color_id?: number) => {
                 }
             })
             .finally(() => setIsLoading(false));
-    }, [product_id, default_color_id]);
+    }, [product_id]);
+
+    useEffect(() => {
+        if (!data) return
+
+        const colorId = default_color_id && data.colors.some(color => color.id === default_color_id)
+            ? default_color_id
+            : data.colors[0]?.id ?? null
+
+        const color = data.colors.find(item => item.id === colorId)
+        const sizeId = default_size_id && color?.sizes.includes(default_size_id)
+            ? default_size_id
+            : null
+
+        setColorId(colorId)
+        setSelectedSizeId(sizeId)
+        setCurrentImageIndex(0)
+    }, [data, default_color_id, default_size_id]);
 
     useEffect(() => {
         getSizes().then((sizesList) => {

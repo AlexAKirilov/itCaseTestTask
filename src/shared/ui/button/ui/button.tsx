@@ -3,23 +3,23 @@ import cn from 'classnames'
 
 import './button.css'
 
-import {Text, TextProps} from '@/shared/ui/text'
+import {Text} from '@/shared/ui/text'
 
 export interface ButtonProps {
     children: React.ReactNode
-    onClickAction?: () => void
+    on_click_action?: () => void
     disabled?: boolean
-    customClassnames?: string[] | string
-    submitButton?: boolean
+    custom_classnames?: string[] | string
+    submit_button?: boolean
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-    const {children, onClickAction, disabled, customClassnames, submitButton} = props
+    const {children, on_click_action, disabled, custom_classnames, submit_button} = props
 
     return (
-        <button type={submitButton ? 'submit' : 'button'} className={cn('btn-reset', 'btn', customClassnames)}
+        <button type={submit_button ? 'submit' : 'button'} className={cn('btn-reset', 'btn', custom_classnames)}
         disabled={disabled}
-        onClick={onClickAction}>
+        onClick={on_click_action}>
             <Text typo={"secondary_sbold"} as={'p'} align={'center'}>
                 {children}
             </Text>

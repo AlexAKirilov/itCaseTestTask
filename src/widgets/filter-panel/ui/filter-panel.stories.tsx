@@ -20,22 +20,22 @@ type Story = StoryObj<typeof meta>
 
 export const По_умолчанию: Story = {
     args: {
-        onlyInStock: false,
-        onToggleInStock: () => {},
-        sortBy: null,
-        onSortBy: () => {},
-        searchQuery: '',
-        onSearchQueryChange: () => {},
+        only_in_stock: false,
+        on_toggle_in_stock: () => {},
+        sort_by: null,
+        on_sort_by: () => {},
+        search_query: '',
+        on_search_query_change: () => {},
     },
 }
 
 export const С_активными_фильтрами: Story = {
     args: {
-        onlyInStock: true,
-        onToggleInStock: () => {},
-        sortBy: 'asc',
-        onSortBy: () => {},
-        searchQuery: 'футболка',
-        onSearchQueryChange: () => {},
+        only_in_stock: true,
+        on_toggle_in_stock: () => {},
+        sort_by: 'asc',
+        on_sort_by: () => {},
+        search_query: 'футболка',
+        on_search_query_change: () => {},
     },
 }
